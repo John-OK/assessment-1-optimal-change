@@ -1,3 +1,10 @@
+# 1. Find change to be given.
+# 2. Use map of denomination values and list of order to step down map from highest to lowest denomination.
+# 3. Get number of bills/coins to return for each denomination and subtract change given from total due.
+# 4. Store number of each denomination to be returned for later text output.
+# 5. Format text and return. 
+
+
 from math import floor
 
 # Map of denominations (in cents to avoid decimal errors).
@@ -56,7 +63,7 @@ def optimal_change(item_cost, amount_paid):
     # Convert to cents in order to avoid decimal errors
     change_due_in_cents = (amount_paid * 100) - (item_cost * 100)
 
-    # dict of number of each denomination given in change
+    # dict to store number of each denomination to be given in change
     return_denominations = {}
 
     # Loop through denominations from highest to lowest to determine how many of each denomination to return and store result in "return_denominations" to be passed to "text_formatter."
@@ -69,3 +76,5 @@ def optimal_change(item_cost, amount_paid):
             change_due_in_cents = remaining_change_due
 
     return text_formatter(item_cost, amount_paid, return_denominations)
+
+print(optimal_change(100, 10))
